@@ -60,4 +60,3 @@ if __name__=='__main__':
         # else, put the text into the update queue to be handled by our handlers
         elif len(text) > 0:
             mybot.update_queue.put(text)
-#https://api.telegram.org/bot5044314787:AAHm9p8hDYKIsZs64Mqz1Y1UIY2rxl3i6Lk/getUpdates
