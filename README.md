@@ -11,6 +11,8 @@
 | 抽水馬達(5V) | 2 | 蝦皮($26)) |
 | 麵包版 | 1 | 電子材料行($30) |
 
+## Technique
+
 ## Implementation Process
 
 ## Installation
@@ -27,4 +29,3 @@
 
 ## Reference
 - https://ithelp.ithome.com.tw/users/20130283/ironman/3553
-- https://www.bilibili.com/s/video/BV1dK4y1b7jY
