@@ -1,5 +1,6 @@
 import crawler
 import motor
+import ReadWebcam
 from telegram.ext import Updater # 更新者
 from telegram.ext import CommandHandler, CallbackQueryHandler # 註冊處理 一般用 回答用
 from telegram.ext import MessageHandler, Filters # Filters過濾訊息
@@ -24,10 +25,16 @@ class telbot:
         self.dispatcher.add_handler(CommandHandler('luckycolor', self.luckycolor))
         self.dispatcher.add_handler(CommandHandler('off', self.off))
         self.dispatcher.add_handler(CommandHandler('spray', self.spray))
+        self.dispatcher.add_handler(CommandHandler('whatcolor', self.whatcolor))
     def spray(self,bot,update):
+        update.message.reply_text(text='吃我噴水水')
         mymotor=motor.motor()
         mymotor.blink(5)
-        update.message.reply_text(text='吃我噴水水')
+        
+    def whatcolor(self,bot,update):
+        mycam=ReadWebcam.color()
+        out=mycam.run()
+        update.message.reply_text(text=out)
     def hi(self,bot, update): # 新增指令/start
         message = update.message
         chat = message['chat']
