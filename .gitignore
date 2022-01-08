@@ -2,3 +2,4 @@ LSA1101_bot_api.txt
 botcommand
 test.py
 drivePath.txt
+__pycache__
