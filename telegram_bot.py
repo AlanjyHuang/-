@@ -1,9 +1,13 @@
 import crawler
 import motor
+from telegram.ext import Updater # 更新者
+from telegram.ext import CommandHandler, CallbackQueryHandler # 註冊處理 一般用 回答用
+from telegram.ext import MessageHandler, Filters # Filters過濾訊息
+from telegram import InlineKeyboardMarkup, InlineKeyboardButton # 互動式按鈕
 class telbot:
     def read_token(self):
         try:
-            f=open('LSA1101_bot_api.TXT','r')
+            f=open('LSA1101_bot_api.TXT','r', encoding="utf-8")
         except:
             print("can't find token file")
         self.token=f.read()
@@ -12,10 +16,6 @@ class telbot:
     def __init__(self):
         self.read_token()
     def startbot(self):
-        from telegram.ext import Updater # 更新者
-        from telegram.ext import CommandHandler, CallbackQueryHandler # 註冊處理 一般用 回答用
-        from telegram.ext import MessageHandler, Filters # Filters過濾訊息
-        from telegram import InlineKeyboardMarkup, InlineKeyboardButton # 互動式按鈕
         # 初始化bot
         self.updater = Updater(token=self.token, use_context=False)
         self.dispatcher = self.updater.dispatcher
