@@ -1,4 +1,5 @@
 import crawler
+import motor
 class telbot:
     def read_token(self):
         try:
@@ -21,6 +22,11 @@ class telbot:
         self.dispatcher.add_handler(CommandHandler('hi', self.hi))
         self.dispatcher.add_handler(CommandHandler('luckycolor', self.luckycolor))
         self.dispatcher.add_handler(CommandHandler('off', self.off))
+        self.dispatcher.add_handler(CommandHandler('spray', self.spray))
+    def spray(self,bot,update):
+        mymotor=motor()
+        mymotor.blink(20)
+        update.message.reply_text(text='吃我噴水水')
     def hi(self,bot, update): # 新增指令/start
         message = update.message
         chat = message['chat']
