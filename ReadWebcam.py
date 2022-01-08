@@ -14,7 +14,7 @@ while True:
     _, frame = vid.read()
 
     # displaying the current frame
-    cv2.imshow("frame", frame)
+    #cv2.imshow("frame", frame)
 
     # setting values for base colors
     b = frame[:, :, :1]

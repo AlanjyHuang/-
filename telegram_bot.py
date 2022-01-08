@@ -7,10 +7,11 @@ from telegram import InlineKeyboardMarkup, InlineKeyboardButton # 互動式按�
 class telbot:
     def read_token(self):
         try:
-            f=open('LSA1101_bot_api.TXT','r', encoding="utf-8")
+            f=open('LSA1101_bot_api.txt','r', encoding="utf-8")
         except:
             print("can't find token file")
         self.token=f.read()
+        self.token=self.token.strip()
         print(self.token)
         f.close()
     def __init__(self):
@@ -24,13 +25,13 @@ class telbot:
         self.dispatcher.add_handler(CommandHandler('off', self.off))
         self.dispatcher.add_handler(CommandHandler('spray', self.spray))
     def spray(self,bot,update):
-        mymotor=motor()
-        mymotor.blink(20)
+        mymotor=motor.motor()
+        mymotor.blink(5)
         update.message.reply_text(text='吃我噴水水')
     def hi(self,bot, update): # 新增指令/start
         message = update.message
         chat = message['chat']
-        update.message.reply_text(text='HI  ' + str(chat['first_name'])+' '+str(chat['last_name']))    
+        update.message.reply_text(text='HI  ' + str(chat['first_name'])+' '+str(chat['last_name']))
     def luckycolor(self,bot,update):
         message=update.message
         starsign=list(message['text'])
@@ -48,7 +49,7 @@ class telbot:
             mysearch.end()
         else:
             update.message.reply_text(text='沒有'+starsign+'這個星座')
-        
+
     def off(self,bot,update):
         print("turn off")
         self.updater.stop()
