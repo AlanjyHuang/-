@@ -2,9 +2,9 @@ class detector:
     def __init__(self,r,g,b):
         count =0
         array = []
-        self.r=r
-        self.g=g
-        self.b=b
+        self.r=int(r)
+        self.g=int(g)
+        self.b=int(b)
         
     def test(self):
         mx = max(self.r,self.g,self.b)
@@ -47,5 +47,8 @@ class detector:
                     return "紫"
 
 if __name__=='__main__':
-    mydetector=detector(255,255,0)
+    r=input("R :")
+    g=input("G :")
+    b=input("B :")
+    mydetector=detector(r,g,b)
     print(mydetector.test())

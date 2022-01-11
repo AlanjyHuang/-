@@ -43,4 +43,4 @@ class color:
 
             time.sleep(1)
             timers -= 1
-            return ("r:" + str(r_mean) + ",g:" + str(g_mean) + ",b:" + str(b_mean))
+            return list([r_mean,g_mean,b_mean])

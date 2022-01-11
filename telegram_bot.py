@@ -21,6 +21,7 @@ class telbot:
         f.close()
     def __init__(self):
         self.read_token()
+        self.water=5
     def startbot(self):
         # 初始化bot
         self.updater = Updater(token=self.token, use_context=False)
@@ -33,12 +34,25 @@ class telbot:
     def spray(self,bot,update):
         update.message.reply_text(text='吃我噴水水')
         mymotor=motor.motor()
-        mymotor.blink(5)
-        
+        mymotor.blink(self.water)
+    #def set_waterpw(self,bot,update): 
+
     def whatcolor(self,bot,update):
         mycam=ReadWebcam.color()
         out=mycam.run()
-        update.message.reply_text(text=out)
+        mydetector=detectcolor.detector(out[0],out[1],out[2])
+        color=mydetector.test()
+        update.message.reply_text(text=color)
+    def yourluckyday(self,update,searchcolor):
+        mycam=ReadWebcam.color()
+        out=mycam.run()
+        mydetector=detectcolor.detector(out[0],out[1],out[2])
+        color=mydetector.test()
+        if(color==searchcolor):
+            update.message.reply_text(text="你今天很幸運喔")
+        else:
+            update.message.reply_text(text="今天不是你的幸運日喔")
+            #self.spray()
     def hi(self,bot, update): # 新增指令/start
         message = update.message
         chat = message['chat']
@@ -62,7 +76,17 @@ class telbot:
             mysearch.end()
         else:
             update.message.reply_text(text='沒有'+starsign+'這個星座')
+        #self.yourluckyday(str(data['starsign'][starsign]))
+        searchcolor=str(data['starsign'][starsign])
         #detectcolor.detector()
+        mycam=ReadWebcam.color()
+        out=mycam.run()
+        mydetector=detectcolor.detector(out[0],out[1],out[2])
+        color=mydetector.test()
+        if(color==searchcolor):
+            update.message.reply_text(text="你今天很幸運喔")
+        else:
+            update.message.reply_text(text="今天不是你的幸運日喔")
     def off(self,bot,update):
         print("turn off")
         self.updater.stop()
