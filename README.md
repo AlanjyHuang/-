@@ -12,6 +12,8 @@
 | 繼電器        | 1    | 電子材料行($60) |
 | 抽水馬達(5V)  | 2    | 蝦皮($26)       |
 | 麵包版        | 1    | 電子材料行($30) |
+| LED顯示板         | 1    | 蝦皮($30)       |
+| webcam        | 1    |  |
 
 ## Technique
 
@@ -25,20 +27,22 @@
 
 ### 林佑諺
 
--
+- 硬體設備 + 控制程式
 
 ### 潘世瑋
 
--
+- 硬體設備 + 控制程式
 
 ### 廖志遠
 
--
+- 影像辨識
 
 ### 黃舟淵
 
--
+- telegram bot
+- 網路爬蟲
 
 ## Reference
 
 -   https://ithelp.ithome.com.tw/users/20130283/ironman/3553
+-   https://blog.csdn.net/jcdjx/article/details/38457271
