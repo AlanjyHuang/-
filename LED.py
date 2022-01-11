@@ -22,7 +22,7 @@ def addColor(r, g, b) :
     red = hex(r)
     green = hex(g)
     blue = hex(b)
-    color = red + green[2:] + blue[2:]
+    color = '0x' + red[2:].zfill(2) + green[2:].zfill(2) + blue[2:].zfill(2)
     colors.append(color)
 
 def map(x, in_min, in_max, out_min, out_max):
