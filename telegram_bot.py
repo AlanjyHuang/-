@@ -1,6 +1,9 @@
 import crawler
 import motor
 import ReadWebcam
+import json
+import time
+from datetime import datetime
 from telegram.ext import Updater # 更新者
 from telegram.ext import CommandHandler, CallbackQueryHandler # 註冊處理 一般用 回答用
 from telegram.ext import MessageHandler, Filters # Filters過濾訊息
@@ -51,8 +54,10 @@ class telbot:
         mysearch=crawler.Fetch()
         if mysearch.isin(starsign):
             update.message.reply_text(text='稍等一下，正在查詢....')
-            mysearch.get_html(starsign)
-            update.message.reply_text(text='今天'+starsign+'的幸運顏色是: '+mysearch.luckycolor)
+            with open("data.json", "r") as f:
+                data=json.load(f)
+            f.close()
+            update.message.reply_text(text='今天'+starsign+'的幸運顏色是: '+str(data['starsign'][starsign]))
             mysearch.end()
         else:
             update.message.reply_text(text='沒有'+starsign+'這個星座')
