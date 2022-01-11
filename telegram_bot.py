@@ -3,6 +3,7 @@ import motor
 import ReadWebcam
 import json
 import time
+import detectcolor
 from datetime import datetime
 from telegram.ext import Updater # 更新者
 from telegram.ext import CommandHandler, CallbackQueryHandler # 註冊處理 一般用 回答用
@@ -61,7 +62,7 @@ class telbot:
             mysearch.end()
         else:
             update.message.reply_text(text='沒有'+starsign+'這個星座')
-
+        #detectcolor.detector()
     def off(self,bot,update):
         print("turn off")
         self.updater.stop()
