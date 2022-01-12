@@ -24,7 +24,7 @@
 <img src="https://user-images.githubusercontent.com/67900973/149158853-be2670db-5bb1-4805-884a-cd5cf8bc9332.jpeg" width="300px"/>
 <img src="https://user-images.githubusercontent.com/67900973/149158993-54349034-194c-460f-9191-d17d92f9d018.jpeg" width="300px"/>
 <img src="https://user-images.githubusercontent.com/67900973/149160147-f09d1797-82b2-4de2-95f7-8cadff48c07e.jpeg" width="300px"/>
-<img src="https://user-images.githubusercontent.com/67900973/149160147-f09d1797-82b2-4de2-95f7-8cadff48c07e.jpeg" width="300px"/>
+<img src="https://user-images.githubusercontent.com/67900973/149160155-a2e94984-58e8-40b4-a92f-e1c4dc677a78.jpeg" width="300px"/>
 
 ## Installation
 
