@@ -19,6 +19,10 @@
 
 ## Implementation Process
 
+- 樹莓派GPIO腳位
+
+![image](https://user-images.githubusercontent.com/93121918/149171056-fa99870f-022f-474d-ad0c-c03faa6b0909.png)
+- 抽水馬達和LED接樹莓派
 <img src="https://user-images.githubusercontent.com/67900973/149155179-1f9a3e8b-53a3-4c87-8809-dbee33114aea.jpeg" width="300px"/>
 <img src="https://user-images.githubusercontent.com/67900973/149158853-be2670db-5bb1-4805-884a-cd5cf8bc9332.jpeg" width="300px"/>
 <img src="https://user-images.githubusercontent.com/67900973/149158993-54349034-194c-460f-9191-d17d92f9d018.jpeg" width="300px"/>
