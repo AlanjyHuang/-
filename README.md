@@ -64,6 +64,7 @@
 ### LED
 
 - LED.py
+    - 顯示幸運色
 ```python=
 import RPi.GPIO as GPIO
 import time
