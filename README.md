@@ -197,7 +197,9 @@
         ![圖片](https://user-images.githubusercontent.com/52521773/149162024-9004c881-ebce-417f-97a0-0070989a9bb4.png)
         
         5.在 Edite bot 中的 Edite command 輸入 botcommand 檔案中的命令，以此宣告命令
-    -   telegram_bot.py 1.引入 telegrambot python 套件
+    -   telegram_bot.py 
+       
+        1.引入 telegrambot python 套件
         ```
             from telegram.ext import Updater # 更新者
             from telegram.ext import CommandHandler, CallbackQueryHandler # 註冊處理 一般用 回答用
