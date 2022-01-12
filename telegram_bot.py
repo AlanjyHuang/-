@@ -3,6 +3,7 @@ import motor
 import ReadWebcam
 import json
 import time
+import LED
 import detectcolor
 from datetime import datetime
 from telegram.ext import Updater # 更新者
@@ -31,12 +32,16 @@ class telbot:
         self.dispatcher.add_handler(CommandHandler('off', self.off))
         self.dispatcher.add_handler(CommandHandler('spray', self.spray))
         self.dispatcher.add_handler(CommandHandler('whatcolor', self.whatcolor))
+        self.dispatcher.add_handler(CommandHandler('set_waterpw', self.set_waterpw))
     def spray(self,bot,update):
         update.message.reply_text(text='吃我噴水水')
         mymotor=motor.motor()
         mymotor.blink(self.water)
-    #def set_waterpw(self,bot,update): 
-
+    def set_waterpw(self,bot,update): 
+        waterpw=update.message
+        waterpw=int(waterpw['text'][12:])
+        if waterpw:
+            update.message.reply_text(text="The waterpower is now set as "+str(waterpw))
     def whatcolor(self,bot,update):
         mycam=ReadWebcam.color()
         out=mycam.run()
@@ -48,11 +53,14 @@ class telbot:
         out=mycam.run()
         mydetector=detectcolor.detector(out[0],out[1],out[2])
         color=mydetector.test()
+        myled=LED.LED()
+        myled.start(5,out[0],out[1],out[2])
         if(color==searchcolor):
             update.message.reply_text(text="你今天很幸運喔")
         else:
             update.message.reply_text(text="今天不是你的幸運日喔")
             #self.spray()
+        
     def hi(self,bot, update): # 新增指令/start
         message = update.message
         chat = message['chat']
