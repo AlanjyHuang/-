@@ -31,11 +31,39 @@
 
 ## Installation
 
-#### 噴水
+### 噴水
 
-#### LED
+  - motor.py
+  ```terminal=
+  try:
+      import RPi.GPIO as GPIO
+  except RuntimeError:
+       print('RunTimeError')
+  import time
+  class motor:
+      def __init__(self) :
+          self.PORT = 14    #把馬達的接地線接在第14腳位
+          GPIO.setmode(GPIO.BCM)
+          GPIO.setup(self.PORT, GPIO.OUT)
+          
+      #噴水
+      def blink(self,times):
+          GPIO.output(self.PORT, GPIO.LOW)  #GPIO.output(PORT, GPIO.TRUE)
+          while times > 0:
+              time.sleep(1)
+              print(times)
+              times -= 1
+          GPIO.output(self.PORT, GPIO.HIGH)
+          GPIO.cleanup()
 
-#### Webcam
+  if __name__ == '__main__':
+      mymotor=motor()
+      mymotor.blink(5)
+  ````
+
+### LED
+
+### Webcam
 
 -   先更新軟體套件
 
