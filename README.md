@@ -174,7 +174,8 @@
 
 #### Telegram bot
 
-    ```terminal=
+    ```
+    terminal=
     pip install -r requirements.txt
     ```
     - 創建telegrambot
