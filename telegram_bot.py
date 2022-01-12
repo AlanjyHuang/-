@@ -33,6 +33,7 @@ class telbot:
         self.dispatcher.add_handler(CommandHandler('spray', self.spray))
         self.dispatcher.add_handler(CommandHandler('whatcolor', self.whatcolor))
         self.dispatcher.add_handler(CommandHandler('set_waterpw', self.set_waterpw))
+        self.dispatcher.add_handler(CommandHandler('blink', self.blink))
     def spray(self,bot,update):
         update.message.reply_text(text='吃我噴水水')
         mymotor=motor.motor()
@@ -65,6 +66,15 @@ class telbot:
         message = update.message
         chat = message['chat']
         update.message.reply_text(text='HI  ' + str(chat['first_name'])+' '+str(chat['last_name']))
+    def blink(self,bot,update):
+        mycam=ReadWebcam.color()
+        out=mycam.run()
+        mydetector=detectcolor.detector(out[0],out[1],out[2])
+        color=mydetector.test()
+        message = update.message
+        myled=LED.LED()
+        myled.start(5,out[0],out[1],out[2])
+        update.message.reply_text(text='亮'+str(color)+'色燈')
     def luckycolor(self,bot,update):
         message=update.message
         starsign=list(message['text'])
@@ -96,7 +106,7 @@ class telbot:
         else:
             update.message.reply_text(text="今天不是你的幸運日喔")
             mymotor=motor.motor()
-            mymotor.blink(self.water)
+        mymotor.blink(self.water)
         myled=LED.LED()
         myled.start(5,out[0],out[1],out[2])
     def off(self,bot,update):

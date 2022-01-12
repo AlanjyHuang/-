@@ -255,7 +255,7 @@
         ```
     -   主要 telegrambo 指令介紹:
         +off - 關機
-        ` #呼叫updater.stop()停止telegrambot self.updater.stop() `
+        `#呼叫updater.stop()停止telegrambot self.updater.stop()`
         +luckycolor - 查詢星座幸運色
         依照使用者輸入的星座查詢幸運色，若使用者衣服與幸運色相同則恭喜，若不同則噴水逞罰，
         最後會用 LED 顯示查詢到的幸運色同時傳送給使用者
@@ -310,6 +310,7 @@
         ```
         +whatcolor - 觀察顏色回傳 RGD
         呼叫 Readwebcam 回傳看到的顏色
+        +blink - 依照觀察顏色亮燈
 
 ## Job Assignment
 
