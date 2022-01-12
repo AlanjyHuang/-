@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
 import time
 
-colors = []
 pins = {'pin_R':11, 'pin_G':12, 'pin_B':13}
 
 GPIO.setmode(GPIO.BOARD)
@@ -23,7 +22,7 @@ def addColor(r, g, b) :
     green = hex(g)
     blue = hex(b)
     color = '0x' + red[2:].zfill(2) + green[2:].zfill(2) + blue[2:].zfill(2)
-    colors.append(color)
+    return int(color, 16)
 
 def map(x, in_min, in_max, out_min, out_max):
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
@@ -42,10 +41,13 @@ def setColor(col):
 	p_B.ChangeDutyCycle(100 - B_val)
 
 try:
-	while True:
-		for col in colors:
-			setColor(col)
-			time.sleep(0.5)
+    times = 5
+	while times > 0:
+        #setColor(addColor())         #輸入RGB(10進位)
+        time.sleep(1)
+        print(times)
+        times -= 1
+    GPIO.cleanup()
 except KeyboardInterrupt:
 	p_R.stop()
 	p_G.stop()
