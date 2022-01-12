@@ -95,6 +95,10 @@ class telbot:
             update.message.reply_text(text="你今天很幸運喔")
         else:
             update.message.reply_text(text="今天不是你的幸運日喔")
+            mymotor=motor.motor()
+            mymotor.blink(self.water)
+        myled=LED.LED()
+        myled.start(5,out[0],out[1],out[2])
     def off(self,bot,update):
         print("turn off")
         self.updater.stop()
