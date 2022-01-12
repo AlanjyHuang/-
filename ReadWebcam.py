@@ -44,3 +44,7 @@ class color:
             time.sleep(1)
             timers -= 1
             return list([r_mean,g_mean,b_mean])
+
+if __name__ =='__main__':
+        mydev=color()
+        print(mydev.run())
