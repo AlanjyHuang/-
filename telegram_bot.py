@@ -34,6 +34,7 @@ class telbot:
         self.dispatcher.add_handler(CommandHandler('whatcolor', self.whatcolor))
         self.dispatcher.add_handler(CommandHandler('set_waterpw', self.set_waterpw))
         self.dispatcher.add_handler(CommandHandler('blink', self.blink))
+        self.dispatcher.add_handler(CommandHandler('hategreen', self.hategreen))
     def spray(self,bot,update):
         update.message.reply_text(text='吃我噴水水')
         mymotor=motor.motor()
@@ -75,6 +76,18 @@ class telbot:
         myled=LED.LED()
         myled.start(5,out[0],out[1],out[2])
         update.message.reply_text(text='亮'+str(color)+'色燈')
+    def hategreen(self,bot,update):
+        mycam=ReadWebcam.color()
+        out=mycam.run()
+        mydetector=detectcolor.detector(out[0],out[1],out[2])
+        color=mydetector.test()
+        update.message.reply_text(text="答案是紫色，因為外星人不戴帽子，所以綠色好討厭")
+        if(color=='綠'):
+            update.message.reply_text(text="就說我討厭綠色了!!!!!!")
+            mymotor=motor.motor()
+            mymotor.blink(self.water)
+        myled=LED.LED()
+        myled.start(5,out[0],out[1],out[2])
     def luckycolor(self,bot,update):
         message=update.message
         starsign=list(message['text'])
@@ -106,7 +119,7 @@ class telbot:
         else:
             update.message.reply_text(text="今天不是你的幸運日喔")
             mymotor=motor.motor()
-        mymotor.blink(self.water)
+            mymotor.blink(self.water)
         myled=LED.LED()
         myled.start(5,out[0],out[1],out[2])
     def off(self,bot,update):
