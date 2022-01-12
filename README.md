@@ -1,4 +1,4 @@
-# -
+# 我討厭綠色
 
 ## Concept Development
 
