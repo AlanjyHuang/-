@@ -40,6 +40,8 @@
     sudo lsusb
     ```
 
+    <img width="502" alt="image" src="https://user-images.githubusercontent.com/81890797/149152823-eb558ad1-4b11-430e-a3ad-ad23930b4d60.png">
+
 - 安裝numpy套件
     ```terminal=
     pip install numpy
