@@ -18,6 +18,7 @@
 | 水管          | 數條 | 親友友情贊助   |
 
 ## Technique
+<img src="https://user-images.githubusercontent.com/67900973/149155179-1f9a3e8b-53a3-4c87-8809-dbee33114aea.jpeg" width="300px"/>
 
 ## Implementation Process
 
