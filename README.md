@@ -69,7 +69,7 @@ import RPi.GPIO as GPIO
 import time
 class LED:
 	def __int__(self):
-		self.pins = {'pin_R':11, 'pin_G':12, 'pin_B':13}
+		self.pins = {'pin_R':11, 'pin_G':12, 'pin_B':13}    #LED板上的R接第11腳位、G接第12、B接第13
 
 		GPIO.setmode(GPIO.BOARD)
 		for i in self.pins:
