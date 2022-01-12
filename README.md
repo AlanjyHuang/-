@@ -1,4 +1,4 @@
-# -
+# 我討厭綠色
 
 ## Concept Development
 
@@ -19,6 +19,10 @@
 
 ## Implementation Process
 
+- 樹莓派GPIO腳位
+
+![image](https://user-images.githubusercontent.com/93121918/149171056-fa99870f-022f-474d-ad0c-c03faa6b0909.png)
+- 抽水馬達和LED接樹莓派
 <img src="https://user-images.githubusercontent.com/67900973/149155179-1f9a3e8b-53a3-4c87-8809-dbee33114aea.jpeg" width="300px"/>
 <img src="https://user-images.githubusercontent.com/67900973/149158853-be2670db-5bb1-4805-884a-cd5cf8bc9332.jpeg" width="300px"/>
 <img src="https://user-images.githubusercontent.com/67900973/149158993-54349034-194c-460f-9191-d17d92f9d018.jpeg" width="300px"/>
@@ -177,11 +181,25 @@
     pip install -r requirements.txt
     ```
 
-    -   創建 telegrambot 1.找到 BotFather 輸入 /newbot
-        ![圖片](https://user-images.githubusercontent.com/52521773/149160866-efdfcc8a-17b0-4a24-a7e9-c65035ecd08f.png) 2.填完所資料(注意:username 要使用 OObot 結尾) 3.拿出 token 並放入新建的檔案 LSA1101_bot_api.txt
-        ![圖片](https://user-images.githubusercontent.com/52521773/149161632-216f9da3-c7b5-47f0-8f75-bbb41dd8b029.png) 4.輸入/mybot 並選擇剛剛設定的 telbot
-        ![圖片](https://user-images.githubusercontent.com/52521773/149162024-9004c881-ebce-417f-97a0-0070989a9bb4.png) 5.在 Edite bot 中的 Edite command 輸入 botcommand 檔案中的命令，以此宣告命令
-    -   telegram_bot.py 1.引入 telegrambot python 套件
+    -   創建 telegrambot 
+       
+        1.找到 BotFather 輸入 /newbot
+    
+        ![圖片](https://user-images.githubusercontent.com/52521773/149160866-efdfcc8a-17b0-4a24-a7e9-c65035ecd08f.png) 
+        
+        2.填完所資料(注意:username 要使用 OObot 結尾) 
+        
+        3.拿出 token 並放入新建的檔案 LSA1101_bot_api.txt
+        ![圖片](https://user-images.githubusercontent.com/52521773/149161632-216f9da3-c7b5-47f0-8f75-bbb41dd8b029.png) 
+        
+        4.輸入/mybot 並選擇剛剛設定的 telbot
+        
+        ![圖片](https://user-images.githubusercontent.com/52521773/149162024-9004c881-ebce-417f-97a0-0070989a9bb4.png)
+        
+        5.在 Edite bot 中的 Edite command 輸入 botcommand 檔案中的命令，以此宣告命令
+    -   telegram_bot.py 
+       
+        1.引入 telegrambot python 套件
         ```
             from telegram.ext import Updater # 更新者
             from telegram.ext import CommandHandler, CallbackQueryHandler # 註冊處理 一般用 回答用
@@ -199,7 +217,12 @@
         mybot.updater.start_polling()  #updater.start_polling()會讓他一直持續處理你定義的handeler直到關閉
         ```
     -   crawler.py
-        1.sudo apt-get install chromium-chromedriver #安裝 chromedriver 2.將安裝好的路徑放入 drivePath.txt(請自己新建) 3.設定 driver
+    
+        1.sudo apt-get install chromium-chromedriver #安裝 chromedriver 
+        
+        2.將安裝好的路徑放入 drivePath.txt(請自己新建) 
+        
+        3.設定 driver
         ```
         with open("drivePath.txt", "r") as f:
             self.drivePath = f.read().strip()
