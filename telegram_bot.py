@@ -1,3 +1,4 @@
+from re import S
 import crawler
 import motor
 import ReadWebcam
@@ -21,6 +22,15 @@ class telbot:
         print(self.token)
         f.close()
     def __init__(self):
+        self.colordic={'紅':[255,0,0],
+          '綠':[0,255,0],
+          '藍':[0,0,255],
+          '黃':[255,255,51],
+          '灰':[160,160,160],
+          '白':[255,255,255],
+          '紫':[178,120,160],
+          '黑':[0,0,0]
+          }
         self.read_token()
         self.water=5
     def startbot(self):
@@ -81,13 +91,16 @@ class telbot:
         out=mycam.run()
         mydetector=detectcolor.detector(out[0],out[1],out[2])
         color=mydetector.test()
+        myled=LED.LED()
+        myled.start(5,out[0],out[1],out[2])
         update.message.reply_text(text="答案是紫色，因為外星人不戴帽子，所以綠色好討厭")
         if(color=='綠'):
             update.message.reply_text(text="就說我討厭綠色了!!!!!!")
+            myled=LED.LED()
+            myled.start(1,0,255,255)
             mymotor=motor.motor()
             mymotor.blink(self.water)
-        myled=LED.LED()
-        myled.start(5,out[0],out[1],out[2])
+        
     def luckycolor(self,bot,update):
         message=update.message
         starsign=list(message['text'])
@@ -109,19 +122,25 @@ class telbot:
             update.message.reply_text(text='沒有'+starsign+'這個星座')
         #self.yourluckyday(str(data['starsign'][starsign]))
         searchcolor=str(data['starsign'][starsign])
+        if searchcolor=='橙':
+            searchcolor='黃'
         #detectcolor.detector()
         mycam=ReadWebcam.color()
         out=mycam.run()
         mydetector=detectcolor.detector(out[0],out[1],out[2])
         color=mydetector.test()
+        myled=LED.LED()
+        myled.start(5,out[0],out[1],out[2])
         if(color==searchcolor):
             update.message.reply_text(text="你今天很幸運喔")
         else:
             update.message.reply_text(text="今天不是你的幸運日喔")
             mymotor=motor.motor()
             mymotor.blink(self.water)
-        myled=LED.LED()
-        myled.start(5,out[0],out[1],out[2])
+            myled=LED.LED()
+            myled.start(5,self.colordic[searchcolor][0],self.colordic[searchcolor][1],self.colordic[searchcolor][2])
+            update.message.reply_text(text="這才是你的幸運色，快把濕衣服換掉")
+            
     def off(self,bot,update):
         print("turn off")
         self.updater.stop()

@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 class LED:
-	def __int__(self):
+	def __init__(self):
 		self.pins = {'pin_R':11, 'pin_G':12, 'pin_B':13}
 
 		GPIO.setmode(GPIO.BOARD)
@@ -28,14 +28,14 @@ class LED:
 	def map(self,x, in_min, in_max, out_min, out_max):
 		return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
-	def setColor(col,self):
+	def setColor(self,col):
 		R_val = (col & 0xFF0000) >> 16
 		G_val = (col & 0x00FF00) >> 8
 		B_val = (col & 0x0000FF) >> 0
 		
-		R_val = map(R_val, 0, 255, 0, 100)
-		G_val = map(G_val, 0, 255, 0, 100)
-		B_val = map(B_val, 0, 255, 0, 100)
+		R_val = self.map(R_val, 0, 255, 0, 100)
+		G_val = self.map(G_val, 0, 255, 0, 100)
+		B_val = self.map(B_val, 0, 255, 0, 100)
 
 		self.p_R.ChangeDutyCycle(100 - R_val)
 		self.p_G.ChangeDutyCycle(100 - G_val)
