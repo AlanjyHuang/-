@@ -169,49 +169,48 @@ if __name__=="__main__":
     # importing required libraries
     import cv2
     import numpy as np
-    import time
+    import matplotlib.pyplot as plt
+
+    from imutils.video import VideoStream
+    from xlsxwriter import Workbook
+
     class color:
         def run(self):
     # taking the input from webcam
-            vid = cv2.VideoCapture(0)
 
-            timers = 5
+        plt.ion()  # Set interactive mode on
 
-    # running while loop just to make sure that
-    # our program keep running untill we stop it
-            while timers>0:
+        # We will be using Video-capture to get the fps value.
+        capture = cv2.VideoCapture(0)
 
-                # capturing the current frame
-                _, frame = vid.read()
+        capture.release()
 
-                # displaying the current frame
-                #cv2.imshow("frame", frame)
+        # New module: VideoStream
+        vs = VideoStream().start()
 
-                # setting values for base colors
-                b = frame[:, :, :1]
-                g = frame[:, :, 1:2]
-                r = frame[:, :, 2:]
+        timers = 5
 
-                # computing the mean
-                b_mean = np.mean(b)
-                g_mean = np.mean(g)
-                r_mean = np.mean(r)
+        while timers>0:
+            frame = vs.read()
 
+            if frame is None:
+                print("Frame is not found!")
+                break
+            
+            b, g, r = cv2.split(frame)
 
+            b_mean = np.mean(b)
+            g_mean = np.mean(g)
+            r_mean = np.mean(r)
 
-                print("r:" + str(r_mean) + ",g:" + str(g_mean) + ",b:" + str(b_mean))
-
-                    # displaying the most prominent color
-                if (b_mean > g_mean and b_mean > r_mean):
-                    print("Blue")
-                if (g_mean > r_mean and g_mean > b_mean):
-                    print("Green")
-                else:
-                    print("Red")
-
-                time.sleep(1)
-                timers -= 1
-                return list([r_mean,g_mean,b_mean])
+            
+            print("r:"+str(r_mean)+", g:"+str(g_mean) + ", b:" + str(b_mean))
+            timers -= 1
+            return list([r_mean,g_mean,b_mean])
+        
+    if __name__ =='__main__':
+            mydev=color()
+            print(mydev.run())
     ```
 
 -   程式碼 - detectcolor.py
@@ -434,11 +433,17 @@ if __name__=="__main__":
         +blink - 依照觀察顏色亮燈
 
 ## 遇到的問題
-- webcam 感測顏色沒有到很準確
+- webcam 感測顏色沒有到很準確 [待解決]
     - 需要很靠近攝像頭
     - 且多數感測出來的會是「白色」
     - ![image](https://user-images.githubusercontent.com/81890797/149274168-1da7461c-8e5a-446f-8cb3-8f5848df63c6.png)
     - ![image](https://user-images.githubusercontent.com/81890797/149274225-9bde2884-d1ca-4aba-8722-2fdfe0e6cfe1.png)
+- telegram bot 問題 [已解決]
+    - 安裝Chromedriver裝到 Linux 64 位元版
+但Raspberry Pi  是 Arm64 
+    - 爬蟲爬太慢，跑太久....
+        - 每天都會先爬蟲爬一次，把資料儲存下來，加快之後的查詢速度
+
 ## Job Assignment
 
 ### 林佑諺
