@@ -459,6 +459,9 @@ if __name__=="__main__":
     -   ![image](https://user-images.githubusercontent.com/81890797/149274225-9bde2884-d1ca-4aba-8722-2fdfe0e6cfe1.png)
 -   telegram bot 問題 [已解決] - 安裝 Chromedriver 裝到 Linux 64 位元版
     但 Raspberry Pi 是 Arm64 - 爬蟲爬太慢，跑太久.... - 每天都會先爬蟲爬一次，把資料儲存下來，加快之後的查詢速度
+-   LED 問題 [待解決]
+    - 色域不夠廣，僅能顯示部分顏色
+    - 線有時候較不靈敏，可能某一R、G、B 感測不良
 
 ## Job Assignment
 
