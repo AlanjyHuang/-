@@ -157,6 +157,11 @@ if __name__=="__main__":
     sudo apt-get install libopencv-dev
     ```
 
+-   安裝 imutils
+    ```terminal=
+    pip install imutils
+    ```
+
 -   程式碼 - ReadWebcam.py
     感測 rgb 數值
 
@@ -428,6 +433,12 @@ if __name__=="__main__":
         呼叫 Readwebcam 回傳看到的顏色
         +blink - 依照觀察顏色亮燈
 
+## 遇到的問題
+- webcam 感測顏色沒有到很準確
+    - 需要很靠近攝像頭
+    - 且多數感測出來的會是「白色」
+    - ![image](https://user-images.githubusercontent.com/81890797/149274168-1da7461c-8e5a-446f-8cb3-8f5848df63c6.png)
+    - ![image](https://user-images.githubusercontent.com/81890797/149274225-9bde2884-d1ca-4aba-8722-2fdfe0e6cfe1.png)
 ## Job Assignment
 
 ### 林佑諺
@@ -451,3 +462,5 @@ if __name__=="__main__":
 
 -   https://ithelp.ithome.com.tw/users/20130283/ironman/3553
 -   https://blog.csdn.net/jcdjx/article/details/38457271
+-   https://atceiling.blogspot.com/2014/04/raspberry-pi-webcam.html
+-   https://www.geeksforgeeks.org/detect-the-rgb-color-from-a-webcam-using-python-opencv/
