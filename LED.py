@@ -55,7 +55,7 @@ class LED:
 			for i in self.pins:
 				GPIO.output(self.pins[i], GPIO.HIGH)
 			GPIO.cleanup()
-
+	
 if __name__=="__main__":
 	myLed=LED()
 	myLed.start(5,255,0,0)

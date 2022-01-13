@@ -19,52 +19,55 @@
 
 ## Implementation Process
 
-- 樹莓派GPIO腳位
+-   樹莓派 GPIO 腳位
 
 ![image](https://user-images.githubusercontent.com/93121918/149171056-fa99870f-022f-474d-ad0c-c03faa6b0909.png)
-- 抽水馬達和LED接樹莓派
-<img src="https://user-images.githubusercontent.com/67900973/149155179-1f9a3e8b-53a3-4c87-8809-dbee33114aea.jpeg" width="300px"/>
-<img src="https://user-images.githubusercontent.com/67900973/149158853-be2670db-5bb1-4805-884a-cd5cf8bc9332.jpeg" width="300px"/>
-<img src="https://user-images.githubusercontent.com/67900973/149158993-54349034-194c-460f-9191-d17d92f9d018.jpeg" width="300px"/>
-<img src="https://user-images.githubusercontent.com/67900973/149160147-f09d1797-82b2-4de2-95f7-8cadff48c07e.jpeg" width="300px"/>
-<img src="https://user-images.githubusercontent.com/67900973/149160155-a2e94984-58e8-40b4-a92f-e1c4dc677a78.jpeg" width="300px"/>
+
+-   抽水馬達和 LED 接樹莓派
+    <img src="https://user-images.githubusercontent.com/67900973/149155179-1f9a3e8b-53a3-4c87-8809-dbee33114aea.jpeg" width="300px"/>
+    <img src="https://user-images.githubusercontent.com/67900973/149158853-be2670db-5bb1-4805-884a-cd5cf8bc9332.jpeg" width="300px"/>
+    <img src="https://user-images.githubusercontent.com/67900973/149158993-54349034-194c-460f-9191-d17d92f9d018.jpeg" width="300px"/>
+    <img src="https://user-images.githubusercontent.com/67900973/149160147-f09d1797-82b2-4de2-95f7-8cadff48c07e.jpeg" width="300px"/>
+    <img src="https://user-images.githubusercontent.com/67900973/149160155-a2e94984-58e8-40b4-a92f-e1c4dc677a78.jpeg" width="300px"/>
 
 ## Installation
 
 ### 噴水
 
-  - motor.py
-  ```terminal=
-  try:
-      import RPi.GPIO as GPIO
-  except RuntimeError:
-      print('RunTimeError')
-  import time
-  class motor:
-      def __init__(self) :
-          self.PORT = 14    #把馬達的接地線接在第14腳位
-          GPIO.setmode(GPIO.BCM)
-          GPIO.setup(self.PORT, GPIO.OUT)
-          
-      #噴水
-      def blink(self,times):
-          GPIO.output(self.PORT, GPIO.LOW)  #GPIO.output(PORT, GPIO.TRUE)
-          while times > 0:
-              time.sleep(1)
-              print(times)
-              times -= 1
-          GPIO.output(self.PORT, GPIO.HIGH)
-          GPIO.cleanup()
+-   motor.py
 
-  if __name__ == '__main__':
-      mymotor=motor()
-      mymotor.blink(5)
-  ```
+```terminal=
+try:
+    import RPi.GPIO as GPIO
+except RuntimeError:
+    print('RunTimeError')
+import time
+class motor:
+    def __init__(self) :
+        self.PORT = 14    #把馬達的接地線接在第14腳位
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.PORT, GPIO.OUT)
+
+    #噴水
+    def blink(self,times):
+        GPIO.output(self.PORT, GPIO.LOW)  #GPIO.output(PORT, GPIO.TRUE)
+        while times > 0:
+            time.sleep(1)
+            print(times)
+            times -= 1
+        GPIO.output(self.PORT, GPIO.HIGH)
+        GPIO.cleanup()
+
+if __name__ == '__main__':
+    mymotor=motor()
+    mymotor.blink(5)
+```
 
 ### LED
 
-- LED.py
-    - 顯示幸運色
+-   LED.py
+    -   顯示幸運色
+
 ```python=
 import RPi.GPIO as GPIO
 import time
@@ -100,7 +103,7 @@ class LED:
 		R_val = (col & 0xFF0000) >> 16
 		G_val = (col & 0x00FF00) >> 8
 		B_val = (col & 0x0000FF) >> 0
-		
+
 		R_val = self.map(R_val, 0, 255, 0, 100)
 		G_val = self.map(G_val, 0, 255, 0, 100)
 		B_val = self.map(B_val, 0, 255, 0, 100)
@@ -128,6 +131,7 @@ if __name__=="__main__":
 	myLed=LED()
 	myLed.start(5,255,0,0)
 ```
+
 ### Webcam
 
 -   先更新軟體套件
@@ -158,6 +162,7 @@ if __name__=="__main__":
     ```
 
 -   安裝 imutils
+
     ```terminal=
     pip install imutils
     ```
@@ -279,48 +284,56 @@ if __name__=="__main__":
     pip install -r requirements.txt
     ```
 
-    -   創建 telegrambot 
-       
+    -   創建 telegrambot
+
         1.找到 BotFather 輸入 /newbot
-    
-        ![圖片](https://user-images.githubusercontent.com/52521773/149160866-efdfcc8a-17b0-4a24-a7e9-c65035ecd08f.png) 
-        
-        2.填完所資料(注意:username 要使用 OObot 結尾) 
-        
+
+        ![圖片](https://user-images.githubusercontent.com/52521773/149160866-efdfcc8a-17b0-4a24-a7e9-c65035ecd08f.png)
+
+        2.填完所資料(注意:username 要使用 OObot 結尾)
+
         3.拿出 token 並放入新建的檔案 LSA1101_bot_api.txt
-        ![圖片](https://user-images.githubusercontent.com/52521773/149161632-216f9da3-c7b5-47f0-8f75-bbb41dd8b029.png) 
-        
+        ![圖片](https://user-images.githubusercontent.com/52521773/149161632-216f9da3-c7b5-47f0-8f75-bbb41dd8b029.png)
+
         4.輸入/mybot 並選擇剛剛設定的 telbot
-        
+
         ![圖片](https://user-images.githubusercontent.com/52521773/149162024-9004c881-ebce-417f-97a0-0070989a9bb4.png)
-        
+
         5.在 Edite bot 中的 Edite command 輸入 botcommand 檔案中的命令，以此宣告命令
-    -   telegram_bot.py 
-       
+
+    -   telegram_bot.py
+
         1.引入 telegrambot python 套件
+
         ```
             from telegram.ext import Updater # 更新者
             from telegram.ext import CommandHandler, CallbackQueryHandler # 註冊處理 一般用 回答用
             from telegram.ext import MessageHandler, Filters # Filters過濾訊息
             from telegram import InlineKeyboardMarkup, InlineKeyboardButton # 互動式按鈕
         ```
+
         2.初始化 bot
+
         ```
         self.updater = Updater(token=self.token, use_context=False) #放入token
         self.dispatcher = self.updater.dispatcher  #用來抓使用者丟給bot的命令
         self.dispatcher.add_handler(CommandHandler('/命令名稱', 命令的function))
         ```
+
         3.讓 telegrambot 運作
+
         ```
         mybot.updater.start_polling()  #updater.start_polling()會讓他一直持續處理你定義的handeler直到關閉
         ```
+
     -   crawler.py
-    
-        1.sudo apt-get install chromium-chromedriver #安裝 chromedriver 
-        
-        2.將安裝好的路徑放入 drivePath.txt(請自己新建) 
-        
+
+        1.sudo apt-get install chromium-chromedriver #安裝 chromedriver
+
+        2.將安裝好的路徑放入 drivePath.txt(請自己新建)
+
         3.設定 driver
+
         ```
         with open("drivePath.txt", "r") as f:
             self.drivePath = f.read().strip()
@@ -329,7 +342,9 @@ if __name__=="__main__":
         self.browser = webdriver.Chrome(executable_path=self.drivePath,
                                         options=options)
         ```
+
         4.抓取資料
+
         ```
         def get_html(self,starsign):
             if starsign=='白羊座':
@@ -357,7 +372,9 @@ if __name__=="__main__":
             color=''.join(description[5:])
             self.luckycolor=color
         ```
+
         5.因為每次啟動都抓一次過於耗時，因此引入將抓到的資訊匯出並以 nodejs 儲存
+
         ```
         def start(self):
             now=datetime.now().strftime("%Y-%m-%d-%H-%M-%S")  #判別距離上次抓取資料是否過去一天
@@ -374,6 +391,7 @@ if __name__=="__main__":
                 json.dump(self.data,f)
             f.close()
         ```
+
     -   主要 telegrambo 指令介紹:
         +off - 關機
         `#呼叫updater.stop()停止telegrambot self.updater.stop()`
@@ -434,11 +452,13 @@ if __name__=="__main__":
         +blink - 依照觀察顏色亮燈
 
 ## 遇到的問題
-- webcam 感測顏色沒有到很準確
-    - 需要很靠近攝像頭
-    - 且多數感測出來的會是「白色」
-    - ![image](https://user-images.githubusercontent.com/81890797/149274168-1da7461c-8e5a-446f-8cb3-8f5848df63c6.png)
-    - ![image](https://user-images.githubusercontent.com/81890797/149274225-9bde2884-d1ca-4aba-8722-2fdfe0e6cfe1.png)
+
+-   webcam 感測顏色沒有到很準確
+    -   需要很靠近攝像頭
+    -   且多數感測出來的會是「白色」
+    -   ![image](https://user-images.githubusercontent.com/81890797/149274168-1da7461c-8e5a-446f-8cb3-8f5848df63c6.png)
+    -   ![image](https://user-images.githubusercontent.com/81890797/149274225-9bde2884-d1ca-4aba-8722-2fdfe0e6cfe1.png)
+
 ## Job Assignment
 
 ### 林佑諺
@@ -464,3 +484,4 @@ if __name__=="__main__":
 -   https://blog.csdn.net/jcdjx/article/details/38457271
 -   https://atceiling.blogspot.com/2014/04/raspberry-pi-webcam.html
 -   https://www.geeksforgeeks.org/detect-the-rgb-color-from-a-webcam-using-python-opencv/
+-   https://www.elle.com/tw/starsigns/today/

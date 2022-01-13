@@ -22,6 +22,7 @@ class telbot:
         print(self.token)
         f.close()
     def __init__(self):
+        
         self.colordic={'紅':[255,0,0],
           '綠':[0,255,0],
           '藍':[0,0,255],
@@ -91,13 +92,12 @@ class telbot:
         out=mycam.run()
         mydetector=detectcolor.detector(out[0],out[1],out[2])
         color=mydetector.test()
-        myled=LED.LED()
-        myled.start(5,out[0],out[1],out[2])
+        self.myled.start(5,out[0],out[1],out[2])
         update.message.reply_text(text="答案是紫色，因為外星人不戴帽子，所以綠色好討厭")
         if(color=='綠'):
             update.message.reply_text(text="就說我討厭綠色了!!!!!!")
-            myled=LED.LED()
-            myled.start(1,0,255,255)
+           
+            self.myled.start(1,0,255,255)
             mymotor=motor.motor()
             mymotor.blink(self.water)
         
@@ -129,18 +129,20 @@ class telbot:
         out=mycam.run()
         mydetector=detectcolor.detector(out[0],out[1],out[2])
         color=mydetector.test()
-        myled=LED.LED()
-        myled.start(5,out[0],out[1],out[2])
+        
+        #self.myled.start(5,out[0],out[1],out[2])
         if(color==searchcolor):
             update.message.reply_text(text="你今天很幸運喔")
         else:
             update.message.reply_text(text="今天不是你的幸運日喔")
             mymotor=motor.motor()
             mymotor.blink(self.water)
-            myled=LED.LED()
-            myled.start(5,self.colordic[searchcolor][0],self.colordic[searchcolor][1],self.colordic[searchcolor][2])
+           # myled1=LED.LED()
+           
             update.message.reply_text(text="這才是你的幸運色，快把濕衣服換掉")
-            
+        myled=LED.LED()
+        myled.start(5,self.colordic[searchcolor][0],self.colordic[searchcolor][1],self.colordic[searchcolor][2])
+
     def off(self,bot,update):
         print("turn off")
         self.updater.stop()
